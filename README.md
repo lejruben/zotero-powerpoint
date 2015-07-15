@@ -6,4 +6,4 @@ This is an open-source project that uses Zotero and enables users to do the foll
 * Add citations to the presentation
 * Generate summary slide(s) of all used citations
 
-[Project video](https://groups.google.com/forum/#!forum/zotero-dev)
+[Project video](https://www.youtube.com/watch?v=SP02B2gAG50)
