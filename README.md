@@ -5,3 +5,5 @@ This is an open-source project that uses Zotero and enables users to do the foll
 * Choose citation style
 * Add citations to the presentation
 * Generate summary slide(s) of all used citations
+
+[Project video](https://groups.google.com/forum/#!forum/zotero-dev)
