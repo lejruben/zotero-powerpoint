@@ -1,0 +1,101 @@
+<!ENTITY preferencesCmdMac.label "Asetukset...">
+<!ENTITY preferencesCmdMac.commandkey ",">
+<!ENTITY servicesMenuMac.label "Palvelut">
+<!ENTITY hideThisAppCmdMac.label "Piilota &brandShortName;">
+<!ENTITY hideThisAppCmdMac.commandkey "H">
+<!ENTITY hideOtherAppsCmdMac.label "Piilota muut">
+<!ENTITY hideOtherAppsCmdMac.commandkey "H">
+<!ENTITY showAllAppsCmdMac.label "Näytä kaikki">
+<!ENTITY quitApplicationCmdMac.label "Lopeta Zotero">
+<!ENTITY quitApplicationCmdMac.key "Q">
+
+
+<!ENTITY fileMenu.label "Tiedosto">
+<!ENTITY fileMenu.accesskey "F">
+<!ENTITY saveCmd.label "Tallenna...">
+<!ENTITY saveCmd.key "S">
+<!ENTITY saveCmd.accesskey "A">
+<!ENTITY pageSetupCmd.label "Sivun asetukset...">
+<!ENTITY pageSetupCmd.accesskey "U">
+<!ENTITY printCmd.label "Tulosta...">
+<!ENTITY printCmd.key "P">
+<!ENTITY printCmd.accesskey "P">
+<!ENTITY closeCmd.label "Sulje">
+<!ENTITY closeCmd.key "W">
+<!ENTITY closeCmd.accesskey "C">
+<!ENTITY quitApplicationCmdWin.label "Poistu">
+<!ENTITY quitApplicationCmdWin.accesskey "x">
+<!ENTITY quitApplicationCmd.label "Lopeta">
+<!ENTITY quitApplicationCmd.accesskey "Q">
+
+
+<!ENTITY editMenu.label "Muokkaa">
+<!ENTITY editMenu.accesskey "E">
+<!ENTITY undoCmd.label "Peru">
+<!ENTITY undoCmd.key "Z">
+<!ENTITY undoCmd.accesskey "U">
+<!ENTITY redoCmd.label "Tee uudelleen">
+<!ENTITY redoCmd.key "Y">
+<!ENTITY redoCmd.accesskey "R">
+<!ENTITY cutCmd.label "Leikkaa">
+<!ENTITY cutCmd.key "X">
+<!ENTITY cutCmd.accesskey "t">
+<!ENTITY copyCmd.label "Kopioi">
+<!ENTITY copyCmd.key "C">
+<!ENTITY copyCmd.accesskey "C">
+<!ENTITY copyCitationCmd.label "Kopioi sitaatti">
+<!ENTITY copyBibliographyCmd.label "Kopioi kirjallisuusluettelo">
+<!ENTITY pasteCmd.label "Liitä">
+<!ENTITY pasteCmd.key "V">
+<!ENTITY pasteCmd.accesskey "P">
+<!ENTITY deleteCmd.label "Poista">
+<!ENTITY deleteCmd.key "D">
+<!ENTITY deleteCmd.accesskey "D">
+<!ENTITY selectAllCmd.label "Valitse kaikki">
+<!ENTITY selectAllCmd.key "A">
+<!ENTITY selectAllCmd.accesskey "A">
+<!ENTITY preferencesCmd.label "Asetukset">
+<!ENTITY preferencesCmd.accesskey "O">
+<!ENTITY preferencesCmdUnix.label "Asetukset">
+<!ENTITY preferencesCmdUnix.accesskey "n">
+<!ENTITY findCmd.label "Etsi">
+<!ENTITY findCmd.accesskey "F">
+<!ENTITY findCmd.commandkey "f">
+<!ENTITY bidiSwitchPageDirectionItem.label "Vaihda sivun suuntaa">
+<!ENTITY bidiSwitchPageDirectionItem.accesskey "g">
+<!ENTITY bidiSwitchTextDirectionItem.label "Vaihda tekstin suuntaa">
+<!ENTITY bidiSwitchTextDirectionItem.accesskey "w">
+<!ENTITY bidiSwitchTextDirectionItem.commandkey "X">
+
+
+<!ENTITY toolsMenu.label "Työkalut">
+<!ENTITY toolsMenu.accesskey "T">
+<!ENTITY addons.label "Lisäosat">
+
+
+<!ENTITY minimizeWindow.key "m">
+<!ENTITY minimizeWindow.label "Pienennä">
+<!ENTITY bringAllToFront.label "Tuo kaikki eteen">
+<!ENTITY zoomWindow.label "Lähennä">
+<!ENTITY windowMenu.label "Ikkuna">
+
+
+<!ENTITY helpMenu.label "Ohje">
+<!ENTITY helpMenu.accesskey "H">
+
+
+<!ENTITY helpMenuWin.label "Ohje">
+<!ENTITY helpMenuWin.accesskey "H">
+<!ENTITY helpMac.commandkey "?">
+<!ENTITY aboutProduct.label "Tietoja tuotteesta &brandShortName;">
+<!ENTITY aboutProduct.accesskey "A">
+<!ENTITY productHelp.label "Ohjeet ja tuki">
+<!ENTITY productHelp.accesskey "H">
+<!ENTITY helpTroubleshootingInfo.label "Vianetsintä">
+<!ENTITY helpTroubleshootingInfo.accesskey "T">
+<!ENTITY helpFeedbackPage.label "Lähetä palautetta...">
+<!ENTITY helpFeedbackPage.accesskey "S">
+<!ENTITY helpReportErrors.label "Ilmoita virheistä Zoterolle...">
+<!ENTITY helpReportErrors.accesskey "R">
+<!ENTITY helpCheckForUpdates.label "Tarkista päivitykset...">
+<!ENTITY helpCheckForUpdates.accesskey "U">

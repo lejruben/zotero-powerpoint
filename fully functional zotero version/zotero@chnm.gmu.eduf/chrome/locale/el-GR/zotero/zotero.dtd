@@ -1,0 +1,292 @@
+<!ENTITY zotero.general.optional "(Προαιρετικό)">
+<!ENTITY zotero.general.note "Σημείωση:">
+<!ENTITY zotero.general.selectAll "Επιλογή όλων">
+<!ENTITY zotero.general.deselectAll "Αποεπιλογή όλων">
+<!ENTITY zotero.general.edit "Επεξεργασία">
+<!ENTITY zotero.general.delete "Διαγραφή">
+<!ENTITY zotero.general.ok "ΟΚ">
+<!ENTITY zotero.general.cancel "Ακύρωση">
+<!ENTITY zotero.general.refresh "Refresh">
+<!ENTITY zotero.general.saveAs "Save As…">
+
+<!ENTITY zotero.errorReport.title "Αναφορά σφάλματος Zotero">
+<!ENTITY zotero.errorReport.unrelatedMessages "Πιθανόν να συμπεριληφθούν μηνύματα άσχετα με το Zotero.">
+<!ENTITY zotero.errorReport.submissionInProgress "Περιμένετε μέχρι να υποβληθεί η αναφορά σφάλματος.">
+<!ENTITY zotero.errorReport.submitted "Η αναφορά σας σφάλματος υποβλήθηκε.">
+<!ENTITY zotero.errorReport.reportID "Ταυτότητα αναφοράς:">
+<!ENTITY zotero.errorReport.postToForums "Παρακαλώ, στείλτε ένα μήνυμα στο φόρουμ του Zotero (forums.zotero.org) με αυτή την Ταυτότητα Σφάλματος, μια περιγραφή του προβλήματος και τα απαραίτητα βήματα για την αναπαραγωγή του.">
+<!ENTITY zotero.errorReport.notReviewed "Error reports are generally not reviewed unless referred to in the forums.">
+
+<!ENTITY zotero.upgrade.title "Μάγος Αναβάθμισης Zotero">
+<!ENTITY zotero.upgrade.newVersionInstalled "Εγκαταστήσατε μια νέα έκδοση του Zotero.">
+<!ENTITY zotero.upgrade.upgradeRequired "Η βάση δεδομένων του Zotero πρέπει να αναβαθμιστεί ώστε να λειτουργεί με την νέα έκδοση.">
+<!ENTITY zotero.upgrade.autoBackup "Θα δημιουργηθεί αυτόματα αντίγραφο ασφαλείας της υπάρχουσας βάσης δεδομένων σας, πριν γίνουν οι οποιεσδήποτε αλλαγές.">
+<!ENTITY zotero.upgrade.majorUpgrade "Αυτή είναι μια κύρια αναβάθμιση.">
+<!ENTITY zotero.upgrade.majorUpgradeBeforeLink "Βεβαιωθείτε ότι έχετε επανεξετάσει τις">
+<!ENTITY zotero.upgrade.majorUpgradeLink "οδηγίες αναβάθμισης">
+<!ENTITY zotero.upgrade.majorUpgradeAfterLink "πριν συνεχίσετε.">
+<!ENTITY zotero.upgrade.upgradeInProgress "Παρακαλώ περιμένετε ώστε να ολοκληρωθεί η διαδικασία αναβάθμισης. Αυτό μπορεί να διαρκέσει μερικά λεπτά.">
+<!ENTITY zotero.upgrade.upgradeSucceeded "Η βάση δεδομένων σας Zotero αναβαθμίστηκε επιτυχώς.">
+<!ENTITY zotero.upgrade.changeLogBeforeLink "Παρακαλώ διαβάστε">
+<!ENTITY zotero.upgrade.changeLogLink "τον κατάλογο των αλλαγών (changelog)">
+<!ENTITY zotero.upgrade.changeLogAfterLink "για να δείτε τι νεότερο υπάρχει.">
+
+<!ENTITY zotero.contextMenu.addTextToCurrentNote "Προσθήκη επιλογής στις Σημειώσεις Zotero">
+<!ENTITY zotero.contextMenu.addTextToNewNote "Δημιουργία Στοιχείου Zotero και Σημειώσεων από Επιλογή">
+<!ENTITY zotero.contextMenu.saveLinkAsItem "Αποθήκευση Συνδέσμου ως Στοιχείο Zotero">
+<!ENTITY zotero.contextMenu.saveImageAsItem "Αποθήκευση Εικόνας ως Στοιχείο Zotero">
+
+<!ENTITY zotero.tabs.info.label "Πληροφορίες">
+<!ENTITY zotero.tabs.notes.label "Σημειώσεις">
+<!ENTITY zotero.tabs.attachments.label "Προσαρτήματα">
+<!ENTITY zotero.tabs.tags.label "Ετικέτες">
+<!ENTITY zotero.tabs.related.label "Σχετίζεται με">
+<!ENTITY zotero.notes.separate "Επεξεργασία σε ξεχωριστό παράθυρο">
+
+<!ENTITY zotero.toolbar.duplicate.label "Εμφάνιση διπλότυπων">
+<!ENTITY zotero.collections.showUnfiledItems "Εμφάνιση Αταξινόμητων στοιχείων">
+
+<!ENTITY zotero.items.itemType "Τύπος στοιχείου">
+<!ENTITY zotero.items.type_column "Τύπος στοιχείου">
+<!ENTITY zotero.items.title_column "Τίτλος">
+<!ENTITY zotero.items.creator_column "Δημιουργός">
+<!ENTITY zotero.items.date_column "Ημερομηνία">
+<!ENTITY zotero.items.year_column "Έτος">
+<!ENTITY zotero.items.publisher_column "Εκδότης">
+<!ENTITY zotero.items.publication_column "Έκδοση">
+<!ENTITY zotero.items.journalAbbr_column "Συντομογραφία περιοδικού">
+<!ENTITY zotero.items.language_column "Γλώσσα">
+<!ENTITY zotero.items.accessDate_column "Πρόσβαση">
+<!ENTITY zotero.items.libraryCatalog_column "Κατάλογος βιβλιοθήκης">
+<!ENTITY zotero.items.callNumber_column "Τηλεφωνικός αριθμός">
+<!ENTITY zotero.items.rights_column "Δικαιώματα">
+<!ENTITY zotero.items.dateAdded_column "Ημερομηνία προσθήκης">
+<!ENTITY zotero.items.dateModified_column "Ημερομηνία τροποποίησης">
+<!ENTITY zotero.items.extra_column "Επιπλέον">
+<!ENTITY zotero.items.archive_column "Αρχείο">
+<!ENTITY zotero.items.archiveLocation_column "Θέση στο Αρχείο">
+<!ENTITY zotero.items.place_column "Τόπο">
+<!ENTITY zotero.items.volume_column "Τόμο">
+<!ENTITY zotero.items.edition_column "Έκδοση">
+<!ENTITY zotero.items.pages_column "Σελίδες">
+<!ENTITY zotero.items.issue_column "Τεύχος">
+<!ENTITY zotero.items.series_column "Σειρά">
+<!ENTITY zotero.items.seriesTitle_column "Τίτλος σειράς">
+<!ENTITY zotero.items.court_column "Αίθουσα">
+<!ENTITY zotero.items.medium_column "Μέσο/Μορφή">
+<!ENTITY zotero.items.genre_column "Είδος">
+<!ENTITY zotero.items.system_column "Σύστημα">
+<!ENTITY zotero.items.moreColumns.label "Περισσότερες στήλες">
+<!ENTITY zotero.items.restoreColumnOrder.label "Αποκατάσταση διάταξης στηλών">
+
+<!ENTITY zotero.items.menu.showInLibrary "Εμφάνιση στην Βιβλιοθήκη">
+<!ENTITY zotero.items.menu.attach.note "Προσθήκη σημείωσης">
+<!ENTITY zotero.items.menu.attach "Προσθήκη προσαρτήματος">
+<!ENTITY zotero.items.menu.attach.snapshot "Προσάρτηση στιγμιότυπου της Τρέχουσας Σελίδας">
+<!ENTITY zotero.items.menu.attach.link "Προσάρτηση Συνδέσμου προς την Τρέχουσα Σελίδα">
+<!ENTITY zotero.items.menu.attach.link.uri "Προσάρτηση Συνδέσμου προς το URI...">
+<!ENTITY zotero.items.menu.attach.file "Attach Stored Copy of File...">
+<!ENTITY zotero.items.menu.attach.fileLink "Attach Link to File...">
+
+<!ENTITY zotero.items.menu.restoreToLibrary "Αποκατάσταση στην Βιβλιοθήκη">
+<!ENTITY zotero.items.menu.duplicateItem "Δημιουργία Διπλότυπου για το Στοιχείο">
+<!ENTITY zotero.items.menu.mergeItems "Συνένωση Στοιχείων...">
+
+<!ENTITY zotero.duplicatesMerge.versionSelect "Επιλέξτε την έκδοση του Στοιχείου που θα χρησιμοποιηθεί ως κύριο στοιχείο:">
+<!ENTITY zotero.duplicatesMerge.fieldSelect "Επιλέξτε πεδία που θα διατηρηθούν από άλλες εκδόσεις του στοιχείου:">
+
+<!ENTITY zotero.toolbar.newItem.label "Νέο στοιχείο">
+<!ENTITY zotero.toolbar.moreItemTypes.label "Περισσότερα">
+<!ENTITY zotero.toolbar.newItemFromPage.label "Δημιουργία Στοιχείου Ιστοσελίδας από την Τρέχουσα Σελίδα">
+<!ENTITY zotero.toolbar.lookup.label "Προσθήκη στοιχείου/ων μέσω Ταυτότητας">
+<!ENTITY zotero.toolbar.removeItem.label "Remove Item...">
+<!ENTITY zotero.toolbar.newCollection.label "New Collection...">
+<!ENTITY zotero.toolbar.newGroup "New Group...">
+<!ENTITY zotero.toolbar.newSubcollection.label "New Subcollection...">
+<!ENTITY zotero.toolbar.newSavedSearch.label "New Saved Search...">
+<!ENTITY zotero.toolbar.emptyTrash.label "Εκκένωση κάδου απορριμάτων">
+<!ENTITY zotero.toolbar.tagSelector.label "Εμφάνιση/Απόκρυψη Επιλογέα ετικετών">
+<!ENTITY zotero.toolbar.actions.label "Ενέργειες">
+<!ENTITY zotero.toolbar.import.label "Import...">
+<!ENTITY zotero.toolbar.importFromClipboard "Εισαγωγή από την προσωρινή μνήμη">
+<!ENTITY zotero.toolbar.export.label "Export Library...">
+<!ENTITY zotero.toolbar.rtfScan.label "RTF Scan...">
+<!ENTITY zotero.toolbar.timeline.label "Δημιουργία χρονοδιαγράμματος">
+<!ENTITY zotero.toolbar.preferences.label "Preferences...">
+<!ENTITY zotero.toolbar.supportAndDocumentation "Υποστήριξη και Τεκμηρίωση">
+<!ENTITY zotero.toolbar.about.label "Σχετικά με το Zotero">
+<!ENTITY zotero.toolbar.advancedSearch "Προχωρημένη αναζήτηση">
+<!ENTITY zotero.toolbar.tab.tooltip "Εναλλαγή της λειτουργίας καρτέλας">
+<!ENTITY zotero.toolbar.openURL.label "Εντοπισμός">
+<!ENTITY zotero.toolbar.openURL.tooltip "Αναζήτηση μέσα από την τοπική βιβλιοθήκη σας">
+
+<!ENTITY zotero.item.add "Προσθήκη">
+<!ENTITY zotero.item.attachment.file.show "Εμφάνιση αρχείου">
+<!ENTITY zotero.item.textTransform "Μετασχηματισμός κειμένου">
+<!ENTITY zotero.item.textTransform.titlecase "Μορφή γραμμάτων τίτλου">
+<!ENTITY zotero.item.textTransform.sentencecase "Μορφή γραμμάτων πρότασης">
+<!ENTITY zotero.item.creatorTransform.nameSwap "Εναλλαγή μεταξύ ονόματος και επιθέτου">
+
+<!ENTITY zotero.toolbar.newNote "Νέα σημείωση">
+<!ENTITY zotero.toolbar.note.standalone "Νέα αυτόνομη σημείωση">
+<!ENTITY zotero.toolbar.note.child "Προσθήκη θυγατρικής σημείωσης">
+<!ENTITY zotero.toolbar.lookup "Lookup by Identifier...">
+<!ENTITY zotero.toolbar.attachment.linked "Link to File...">
+<!ENTITY zotero.toolbar.attachment.add "Store Copy of File...">
+<!ENTITY zotero.toolbar.attachment.weblink "Αποθήκευση Συνδέσμου στην Τρέχουσα Σελίδα">
+<!ENTITY zotero.toolbar.attachment.snapshot "Λήψη Στιγμιότυπου της Τρέχουσας Σελίδας">
+
+<!ENTITY zotero.tagSelector.noTagsToDisplay "Δεν υπάρχουν ετικέτες προς εμφάνιση">
+<!ENTITY zotero.tagSelector.filter "Φίλτρο">
+<!ENTITY zotero.tagSelector.showAutomatic "Show automatic">
+<!ENTITY zotero.tagSelector.displayAllInLibrary "Display all tags in this library">
+<!ENTITY zotero.tagSelector.selectVisible "Select visible">
+<!ENTITY zotero.tagSelector.clearVisible "Deselect visible">
+<!ENTITY zotero.tagSelector.clearAll "Deselect all">
+<!ENTITY zotero.tagSelector.assignColor "Απόδοση χρώματος...">
+<!ENTITY zotero.tagSelector.renameTag "Rename Tag...">
+<!ENTITY zotero.tagSelector.deleteTag "Delete Tag...">
+
+<!ENTITY zotero.tagColorChooser.title "Επιλέξτε χρώμα ετικέτας και θέση">
+<!ENTITY zotero.tagColorChooser.color "Χρώμα:">
+<!ENTITY zotero.tagColorChooser.position "Θέση:">
+<!ENTITY zotero.tagColorChooser.setColor "Καθορισμός χρώματος">
+<!ENTITY zotero.tagColorChooser.removeColor "Απομάκρυνση χρώματος">
+
+<!ENTITY zotero.lookup.description "Εισάγετε στο παρακάτω πεδίο ένα ή περισσότερα ISBN, DOI ή PMID για αναζήτηση.">
+<!ENTITY zotero.lookup.button.search "Αναζήτηση">
+
+<!ENTITY zotero.selectitems.title "Επιλέξτε στοιχεία">
+<!ENTITY zotero.selectitems.intro.label "Επιλέξτε ποια στοιχεία θέλετε να προσθέσετε στην βιβλιοθήκη σας">
+<!ENTITY zotero.selectitems.cancel.label "Άκυρο">
+<!ENTITY zotero.selectitems.select.label "ΟΚ">
+
+<!ENTITY zotero.bibliography.title "Δημιουργία Παραπομπής/Βιβλιογραφίας">
+<!ENTITY zotero.bibliography.style.label "Στυλ παραπομπής:">
+<!ENTITY zotero.bibliography.outputMode "Λειτουργία αποτελέσματος:">
+<!ENTITY zotero.bibliography.bibliography "Βιβλιογραφία">
+<!ENTITY zotero.bibliography.outputMethod "Μέθοδος αποτελέσματος:">
+<!ENTITY zotero.bibliography.saveAsRTF.label "Αποθήκευση ως RTF">
+<!ENTITY zotero.bibliography.saveAsHTML.label "Αποθήκευση ως HTML">
+<!ENTITY zotero.bibliography.copyToClipboard.label "Αντιγραφή στο Προχειρο">
+<!ENTITY zotero.bibliography.print.label "Εκτύπωση">
+
+<!ENTITY zotero.integration.docPrefs.title "Προτιμήσεις εγγράφου">
+<!ENTITY zotero.integration.addEditCitation.title "Προσθήκη/Επεξεργασία Παραπομπής">
+<!ENTITY zotero.integration.editBibliography.title "Επεξεργασία Βιβλιογραφίας">
+<!ENTITY zotero.integration.quickFormatDialog.title "Παραπομπή γρήγορης μορφής">
+
+<!ENTITY zotero.progress.title "Πρόοδος">
+
+<!ENTITY zotero.exportOptions.title "Export...">
+<!ENTITY zotero.exportOptions.format.label "Μορφή:">
+<!ENTITY zotero.exportOptions.translatorOptions.label "Επιλογές μεταφραστή">
+
+<!ENTITY zotero.charset.label "Κωδικοποίηση χαρακτήρων">
+<!ENTITY zotero.moreEncodings.label "Περισσότερες κωδικοποιησεις">
+
+<!ENTITY zotero.citation.keepSorted.label "Διατήρηση της ταξινόμησης των πηγών">
+
+<!ENTITY zotero.citation.page "Σελίδα">
+<!ENTITY zotero.citation.paragraph "Παράγραφος">
+<!ENTITY zotero.citation.line "Γραμμή">
+<!ENTITY zotero.citation.suppressAuthor.label "Σύμπτυξη συγγραφέα">
+<!ENTITY zotero.citation.prefix.label "Πρόθεμα:">
+<!ENTITY zotero.citation.suffix.label "Επίθημα:">
+<!ENTITY zotero.citation.editorWarning.label "Προειδοποίηση: Αν επεξεργαστείτε κάποια παραπομπή με το επεξεργαστή, δεν θα ενημερωθεί ώστε να αντανακλά τις αλλαγές μέσα στην βάση δεδομένων σας ή στο στυλ των παραπομπών.">
+
+<!ENTITY zotero.richText.italic.label "Πλάγια">
+<!ENTITY zotero.richText.bold.label "Έντονα">
+<!ENTITY zotero.richText.underline.label "Υπογραμμισμένα">
+<!ENTITY zotero.richText.superscript.label "Εκθέτης">
+<!ENTITY zotero.richText.subscript.label "Δείκτης">
+
+<!ENTITY zotero.annotate.toolbar.add.label "Προσθήκη σχολίων">
+<!ENTITY zotero.annotate.toolbar.collapse.label "Σύμπτυξη όλων των σχολιασμών">
+<!ENTITY zotero.annotate.toolbar.expand.label "Ανάπτυξη όλων των σχολιασμών">
+<!ENTITY zotero.annotate.toolbar.highlight.label "Υπογράμμιση κειμένου">
+<!ENTITY zotero.annotate.toolbar.unhighlight.label "Unhighlight Text">
+
+<!ENTITY zotero.integration.prefs.displayAs.label "Προβολή παραπομπών ως:">
+<!ENTITY zotero.integration.prefs.footnotes.label "Σημειώσεις υποσέλιδου">
+<!ENTITY zotero.integration.prefs.endnotes.label "Σημειώσεις τέλους">
+
+<!ENTITY zotero.integration.prefs.formatUsing.label "Χρήση μορφής:">
+<!ENTITY zotero.integration.prefs.bookmarks.label "Σελιδοδείκτες">
+<!ENTITY zotero.integration.prefs.bookmarks.caption "Bookmarks are preserved across Microsoft Word and OpenOffice, but may be accidentally modified.">
+
+
+<!ENTITY zotero.integration.prefs.automaticJournalAbbeviations.label "Αυτόματη συντομογράφηση τίτλων περιοδικών">
+<!ENTITY zotero.integration.prefs.automaticJournalAbbeviations.caption "Οι συντομογραφίες MEDLINE των περιοδικών θα δημιουργούνται αυτόματα, χρησιμοποιώντας τους τίτλους των περιοδικών. Το πεδίο «Συντομογραφίες περιοδικών» θα αγνοείται.">
+
+<!ENTITY zotero.integration.prefs.storeReferences.label "Αποθήκευση αναφορών σε έγγραφο">
+<!ENTITY zotero.integration.prefs.storeReferences.caption "Η αποθήκευση των αναφορών σε έγγραφο αυξάνει ελαφρώς το μέγεθος του αρχείου, αλλά επιτρέπει τον διαμοιρασμό του εγγράφου σας με άλλους, χρησιμοποιώντας κάποια ομάδα Zotero. Για την αναβάθμιση εγγράφων που δημιουργήθηκαν με την λειτουργία αυτή απαιτείται Zotero 3.0 ή μεταγενέστερο.">
+
+<!ENTITY zotero.integration.showEditor.label "Εμφάνιση επεξεργαστή">
+<!ENTITY zotero.integration.classicView.label "Κλασική προβολή">
+
+<!ENTITY zotero.integration.references.label "Αναφορές μέσα στη Βιβλιογραφία">
+
+<!ENTITY zotero.sync.button "Συγχρονισμός με τον διακομιστή του Zotero">
+<!ENTITY zotero.sync.error "Σφάλμα συγχρονισμού">
+<!ENTITY zotero.sync.storage.progress "Πρόοδος:">
+<!ENTITY zotero.sync.storage.downloads "Λήψεις:">
+<!ENTITY zotero.sync.storage.uploads "Μεταφορτώσεις:">
+
+<!ENTITY zotero.sync.longTagFixer.followingTagTooLong "Η ακόλουθη ετικέτα στην βιβλιοθήκη σας Zotero είναι πολύ μεγάλη για να συγχρονιστεί με τον διακομιστή:">
+<!ENTITY zotero.sync.longTagFixer.syncedTagSizeLimit "Οι συγχρονιζόμενες ετικέτες πρέπει να είναι μικρότερες των 256 χαρακτήρων.">
+<!ENTITY zotero.sync.longTagFixer.splitEditDelete "Μπορείτε είτε να διαιρέσετε την ετικέτα σε πολλαπλές ετικέτες, να επεξεργαστείτε χειροκίνητα την ετικέτα ώστε να την μικρύνετε ή να την διαγράψετε.">
+<!ENTITY zotero.sync.longTagFixer.split "Διαίρεση">
+<!ENTITY zotero.sync.longTagFixer.splitAtThe "Διαίρεση στον">
+<!ENTITY zotero.sync.longTagFixer.character "χαρακτήρα">
+<!ENTITY zotero.sync.longTagFixer.characters "χαρακτήρες">
+<!ENTITY zotero.sync.longTagFixer.uncheckedTagsNotSaved "Οι μη επιλεγμένες ετικέτες δεν θα αποθηκευθούν.">
+<!ENTITY zotero.sync.longTagFixer.tagWillBeDeleted "Η ετικέτα θα διαγραφεί από όλα τα στοιχεία.">
+
+<!ENTITY zotero.merge.title "Επίλυση διενέξεων">
+<!ENTITY zotero.merge.of "of">
+<!ENTITY zotero.merge.deleted "Διαγραμμένων">
+
+<!ENTITY zotero.proxy.recognized.title "Διαμεσολαβητές που αναγνωρίστηκαν">
+<!ENTITY zotero.proxy.recognized.warning "Προσθήκη μόνον διαμεσολαβητών που συνδέονται με την βιβλιοθήκη σας, το σχολείο ή εταιρικό ιστότοπο.">
+<!ENTITY zotero.proxy.recognized.warning.secondary "Η προσθήκη άλλων διαμεσολαβητών επιτρέπει σε βλαπτικούς ιστότοπους να μεταμφιέζονται σε ιστότοπους που εμπιστεύεστε.">
+<!ENTITY zotero.proxy.recognized.disable.label "Να μην γίνεται αυτόματη ανακατεύθυνση των αιτήσεων μέσω προηγουμένως αναγνωρισμένων διαμεσολαβητών.">
+<!ENTITY zotero.proxy.recognized.ignore.label "Αγνόηση">
+
+<!ENTITY zotero.recognizePDF.recognizing.label "Retrieving Metadata...">
+<!ENTITY zotero.recognizePDF.cancel.label "Ακύρωση">
+<!ENTITY zotero.recognizePDF.pdfName.label "Όνομα PDF">
+<!ENTITY zotero.recognizePDF.itemName.label "Όνομα στοιχείου">
+
+<!ENTITY zotero.rtfScan.title "Σάρωση RTF">
+<!ENTITY zotero.rtfScan.cancel.label "Ακύρωση">
+<!ENTITY zotero.rtfScan.citation.label "Παραπομπή">
+<!ENTITY zotero.rtfScan.itemName.label "Όνομα στοιχείου">
+<!ENTITY zotero.rtfScan.unmappedCitations.label "Αχαρτογράφητες παραπομπές">
+<!ENTITY zotero.rtfScan.ambiguousCitations.label "Ασαφής παραπομπή">
+<!ENTITY zotero.rtfScan.mappedCitations.label "Χαρτογραφημένες παραπομπές">
+<!ENTITY zotero.rtfScan.introPage.label "Εισαγωγή">
+<!ENTITY zotero.rtfScan.introPage.description "Zotero can automatically extract and reformat citations and insert a bibliography into RTF files. To get started, choose an RTF file below.">
+<!ENTITY zotero.rtfScan.introPage.description2 "Για να ξεκινήσετε, πιο κάτω επιλέξτε ένα αρχείο εισόδου RTF και ένα αρχείο εξόδου:">
+<!ENTITY zotero.rtfScan.scanPage.label "Σάρωση για παραπομπές">
+<!ENTITY zotero.rtfScan.scanPage.description "Το Zotero σαρώνει τα έγγραφά σας για παραπομπές. Παρακαλώ περιμένετε.">
+<!ENTITY zotero.rtfScan.citationsPage.label "Εξακρίβωση παρατιθέμενων στοιχείων">
+<!ENTITY zotero.rtfScan.citationsPage.description "Παρακαλώ, εξετάστε τον κατάλογο των αναγνωρισμένων παραπομπών που ακολουθεί για να βεβαιωθείτε ότι το Zotero έχει επιλέξει τα αντίστοιχα στοιχεία σωστά. Κάθε αχαρτογράφητη ή ασαφής παραπομπή πρέπει να αντιμετωπιστεί πριν προχωρήσετε στο επόμενο βήμα.">
+<!ENTITY zotero.rtfScan.stylePage.label "Document Formatting">
+<!ENTITY zotero.rtfScan.formatPage.label "Formatting Citations">
+<!ENTITY zotero.rtfScan.formatPage.description "Zotero is processing and formatting your RTF file. Please be patient.">
+<!ENTITY zotero.rtfScan.completePage.label "RTF Scan Complete">
+<!ENTITY zotero.rtfScan.completePage.description "Your document has now been scanned and processed. Please ensure that it is formatted correctly.">
+<!ENTITY zotero.rtfScan.inputFile.label "Input File">
+<!ENTITY zotero.rtfScan.outputFile.label "Output File">
+
+<!ENTITY zotero.file.choose.label "Choose File...">
+<!ENTITY zotero.file.noneSelected.label "No file selected">
+
+<!ENTITY zotero.downloadManager.label "Save to Zotero">
+<!ENTITY zotero.downloadManager.saveToLibrary.description "Attachments cannot be saved to the currently selected library. This item will be saved to your library instead.">
+<!ENTITY zotero.downloadManager.noPDFTools.description "To use this feature, you must first install the PDF tools in the Search pane of the Zotero preferences.">
+
+<!ENTITY zotero.attachLink.title "Attach Link to URI">
+<!ENTITY zotero.attachLink.label.link "Link:">
+<!ENTITY zotero.attachLink.label.title "Title:">

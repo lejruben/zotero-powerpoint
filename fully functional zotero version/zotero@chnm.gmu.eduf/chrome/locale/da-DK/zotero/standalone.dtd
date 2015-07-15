@@ -1,0 +1,101 @@
+<!ENTITY preferencesCmdMac.label "Indstillinger...">
+<!ENTITY preferencesCmdMac.commandkey ",">
+<!ENTITY servicesMenuMac.label "Tjenester">
+<!ENTITY hideThisAppCmdMac.label "Skjul &brandShortName;">
+<!ENTITY hideThisAppCmdMac.commandkey "H">
+<!ENTITY hideOtherAppsCmdMac.label "Skjul andre">
+<!ENTITY hideOtherAppsCmdMac.commandkey "H">
+<!ENTITY showAllAppsCmdMac.label "Vis alle">
+<!ENTITY quitApplicationCmdMac.label "Afslut Zotero">
+<!ENTITY quitApplicationCmdMac.key "Q">
+
+
+<!ENTITY fileMenu.label "Fil">
+<!ENTITY fileMenu.accesskey "F">
+<!ENTITY saveCmd.label "Gem...">
+<!ENTITY saveCmd.key "S">
+<!ENTITY saveCmd.accesskey "A">
+<!ENTITY pageSetupCmd.label "Sideopsætning...">
+<!ENTITY pageSetupCmd.accesskey "U">
+<!ENTITY printCmd.label "Udskriv…">
+<!ENTITY printCmd.key "P">
+<!ENTITY printCmd.accesskey "P">
+<!ENTITY closeCmd.label "Luk">
+<!ENTITY closeCmd.key "W">
+<!ENTITY closeCmd.accesskey "C">
+<!ENTITY quitApplicationCmdWin.label "Exit">
+<!ENTITY quitApplicationCmdWin.accesskey "x">
+<!ENTITY quitApplicationCmd.label "Afslut">
+<!ENTITY quitApplicationCmd.accesskey "Q">
+
+
+<!ENTITY editMenu.label "Rediger">
+<!ENTITY editMenu.accesskey "E">
+<!ENTITY undoCmd.label "Fortryd">
+<!ENTITY undoCmd.key "Z">
+<!ENTITY undoCmd.accesskey "U">
+<!ENTITY redoCmd.label "Gendan">
+<!ENTITY redoCmd.key "Y">
+<!ENTITY redoCmd.accesskey "R">
+<!ENTITY cutCmd.label "Klip">
+<!ENTITY cutCmd.key "X">
+<!ENTITY cutCmd.accesskey "t">
+<!ENTITY copyCmd.label "Kopier">
+<!ENTITY copyCmd.key "C">
+<!ENTITY copyCmd.accesskey "C">
+<!ENTITY copyCitationCmd.label "Kopier henvisning">
+<!ENTITY copyBibliographyCmd.label "Kopier referenceliste">
+<!ENTITY pasteCmd.label "Indsæt">
+<!ENTITY pasteCmd.key "V">
+<!ENTITY pasteCmd.accesskey "P">
+<!ENTITY deleteCmd.label "Slet">
+<!ENTITY deleteCmd.key "D">
+<!ENTITY deleteCmd.accesskey "D">
+<!ENTITY selectAllCmd.label "Vælg alle">
+<!ENTITY selectAllCmd.key "A">
+<!ENTITY selectAllCmd.accesskey "A">
+<!ENTITY preferencesCmd.label "Indstillinger">
+<!ENTITY preferencesCmd.accesskey "O">
+<!ENTITY preferencesCmdUnix.label "Indstillinger">
+<!ENTITY preferencesCmdUnix.accesskey "n">
+<!ENTITY findCmd.label "Find">
+<!ENTITY findCmd.accesskey "F">
+<!ENTITY findCmd.commandkey "f">
+<!ENTITY bidiSwitchPageDirectionItem.label "Byt sideorientering">
+<!ENTITY bidiSwitchPageDirectionItem.accesskey "g">
+<!ENTITY bidiSwitchTextDirectionItem.label "Byt tekst-orientering">
+<!ENTITY bidiSwitchTextDirectionItem.accesskey "w">
+<!ENTITY bidiSwitchTextDirectionItem.commandkey "X">
+
+
+<!ENTITY toolsMenu.label "Værktøj">
+<!ENTITY toolsMenu.accesskey "T">
+<!ENTITY addons.label "Tilføjelser">
+
+
+<!ENTITY minimizeWindow.key "m">
+<!ENTITY minimizeWindow.label "Minimer">
+<!ENTITY bringAllToFront.label "Før alle op foran">
+<!ENTITY zoomWindow.label "Zoom">
+<!ENTITY windowMenu.label "Vindue">
+
+
+<!ENTITY helpMenu.label "Hjælp">
+<!ENTITY helpMenu.accesskey "H">
+
+
+<!ENTITY helpMenuWin.label "Hjælp">
+<!ENTITY helpMenuWin.accesskey "H">
+<!ENTITY helpMac.commandkey "?">
+<!ENTITY aboutProduct.label "Om &brandShortName;">
+<!ENTITY aboutProduct.accesskey "A">
+<!ENTITY productHelp.label "Support og Dokumentation">
+<!ENTITY productHelp.accesskey "H">
+<!ENTITY helpTroubleshootingInfo.label "Oplysninger til problemløsning">
+<!ENTITY helpTroubleshootingInfo.accesskey "T">
+<!ENTITY helpFeedbackPage.label "Feedback til projektet...">
+<!ENTITY helpFeedbackPage.accesskey "S">
+<!ENTITY helpReportErrors.label "Rapporter fejl til Zotero">
+<!ENTITY helpReportErrors.accesskey "R">
+<!ENTITY helpCheckForUpdates.label "Tjek for opdateringer...">
+<!ENTITY helpCheckForUpdates.accesskey "U">

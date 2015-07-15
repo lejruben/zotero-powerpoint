@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<!--
+    ***** BEGIN LICENSE BLOCK *****
+    
+    Copyright © 2011 Center for History and New Media
+                     George Mason University, Fairfax, Virginia, USA
+                     http://zotero.org
+    
+    This file is part of Zotero.
+    
+    Zotero is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    
+    Zotero is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+    
+    You should have received a copy of the GNU Affero General Public License
+    along with Zotero.  If not, see <http://www.gnu.org/licenses/>.
+    
+    ***** END LICENSE BLOCK *****
+-->
+
+<bindings xmlns="http://www.mozilla.org/xbl"
+		  xmlns:xbl="http://www.mozilla.org/xbl"
+		  xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	
+	<binding id="guidancepanel">
+		<implementation>
+			<method name="show">
+				<parameter name="forEl"/>
+				<parameter name="text"/>
+				<body>
+				<![CDATA[
+					Components.utils.import("resource://gre/modules/Services.jsm");
+
+					var about = this.getAttribute("about"),
+						pref = "firstRunGuidanceShown."+about,
+						shown = false;
+					try {
+						shown = Zotero.Prefs.get(pref);
+					} catch(e) {};
+					if(shown) return;
+					
+					var x = this.getAttribute("x"),
+						y = this.getAttribute("y"),
+						position = this.getAttribute("position"),
+						panel = document.getAnonymousNodes(this)[0];
+					
+					if(!forEl) forEl = document.getElementById(this.getAttribute("for"));
+					if(!text) text = Zotero.getString("firstRunGuidance."+about);
+					text = text.split("\n");
+					var descriptionNode = panel.lastChild;
+					
+					while (descriptionNode.hasChildNodes()) {
+						descriptionNode.removeChild(descriptionNode.firstChild);
+					}
+					
+					while(text.length) {
+						var textLine = text.shift();
+						descriptionNode.appendChild(document.createTextNode(textLine));
+						if(text.length) descriptionNode.appendChild(document.createElementNS(
+							"http://www.w3.org/1999/xhtml", "br"));
+					}
+					
+					this.setAttribute('onpopuphidden', 'this.hidden = true');
+					
+					var me = this;
+					var f = function() {
+						if(me.hasAttribute("foregroundonly") && Services.ww.activeWindow != window) return;
+						me.hidden = false;
+						panel.openPopup(forEl, position ? position : "after_start",
+							x ? parseInt(x, 10) : 0, y ? parseInt(y, 10) : 0, false, false, null);
+						Zotero.Prefs.set(pref, true);
+					};
+
+					if(this.hasAttribute("delay")) {
+						window.setTimeout(f, this.getAttribute("delay"));
+					} else {
+						f();
+					}
+
+					if(this.hasAttribute("noautohide")) {
+						var listener = function() {
+							panel.hidePopup();
+							panel.removeEventListener("click", listener, false);
+						}
+						panel.addEventListener("click", listener, false);
+					}
+				]]>
+				</body>
+			</method>
+			<method name="hide">
+				<body>
+				<![CDATA[
+					document.getAnonymousNodes(this)[0].hidePopup();
+				]]>
+				</body>
+			</method>
+		</implementation>
+		
+		<content>
+			<xul:panel orient="horizontal" style="max-width: 400px" type="arrow" align="top" xbl:inherits="noautohide">
+				<xul:image src="chrome://zotero/skin/zotero-new-z-48px.png" style="margin-right: 10px; width: 48px; height: 48px;"/>
+				<xul:description flex="1"></xul:description>
+			</xul:panel>
+		</content>
+	</binding>
+</bindings>

@@ -1,0 +1,70 @@
+#title
+{
+	font-weight: bold;
+	margin: 4px 5px 1px 5px !important;
+	padding: 0 2px 0 2px;
+	/* Don't collapse blank attachment titles, since it prevents renaming */
+	min-height: 1.25em;
+}
+
+#url
+{
+	margin: 1px 5px 2px 5px !important;
+	padding: 0 2px 0 2px !important;
+}
+
+#index-box
+{
+	-moz-box-align: center;
+}
+
+#reindex
+{
+	padding-left: 5px;
+	list-style-image: url(chrome://zotero/skin/arrow_refresh.png);
+}
+
+#index-box > button
+{
+	font-size: .95em;
+	padding: 0;
+}
+
+#linksbox
+{
+	margin-bottom: 4px;
+}
+
+row label
+{
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+row > label, row > hbox
+{
+	margin-top: 1px !important;
+	margin-bottom: 1px !important;
+	-moz-box-pack: start;
+	-moz-margin-start: 1px !important;
+	-moz-margin-end: 5px !important;
+	padding: 0 2px 0 2px !important;
+	border-radius: 6px;
+	border: 1px solid transparent;
+}
+
+row > hbox
+{
+	-moz-box-align: center;
+}
+
+row > label:first-child
+{
+	text-align: right;
+	font-weight: bold;
+	-moz-margin-start: 3px !important;
+	-moz-margin-end: 0 !important;
+	width: 62px;
+	text-align: right;
+	font-weight:bold;
+}

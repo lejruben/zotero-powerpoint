@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<!--
+    ***** BEGIN LICENSE BLOCK *****
+    
+    Copyright © 2009 Center for History and New Media
+                     George Mason University, Fairfax, Virginia, USA
+                     http://zotero.org
+    
+    This file is part of Zotero.
+    
+    Zotero is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    
+    Zotero is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+    
+    You should have received a copy of the GNU Affero General Public License
+    along with Zotero.  If not, see <http://www.gnu.org/licenses/>.
+    
+    ***** END LICENSE BLOCK *****
+-->
+<?xml-stylesheet href="chrome://zotero/skin/itemPane.css" type="text/css"?>
+<?xml-stylesheet href="chrome://zotero-platform/content/itemPane.css" type="text/css"?>
+
+<!DOCTYPE window SYSTEM "chrome://zotero/locale/zotero.dtd">
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<script src="include.js"/>
+	<script src="itemPane.js" type="application/javascript;version=1.8"/>
+	
+	<vbox id="zotero-item-pane" zotero-persist="width">
+		<!-- Trash -->
+		<vbox id="zotero-item-restore-button-holder">
+			<button id="zotero-item-restore-button" label="&zotero.items.menu.restoreToLibrary;"
+				oncommand="ZoteroPane_Local.restoreSelectedItems()" hidden="true"/>
+		</vbox>
+		
+		<!-- Commons -->
+		<button id="zotero-item-show-original" label="Show Original"
+			oncommand="ZoteroPane_Local.showOriginalItem()" hidden="true"/>
+		
+		<deck id="zotero-item-pane-content" selectedIndex="0" flex="1">
+			<!-- Center label (for zero or multiple item selection) -->
+			<groupbox id="zotero-item-pane-groupbox" pack="center" align="center">
+				<label id="zotero-item-pane-message"/>
+			</groupbox>
+			
+			<!-- Regular item -->
+			<tabbox id="zotero-view-tabbox" flex="1" onselect="if (!ZoteroPane_Local.collectionsView.selection || event.originalTarget.localName != 'tabpanels') { return; }; ZoteroItemPane.viewItem(ZoteroPane_Local.getSelectedItems()[0], ZoteroPane_Local.collectionsView.editable ? 'edit' : 'view', this.selectedIndex)">
+				<tabs>
+					<tab label="&zotero.tabs.info.label;"/>
+					<tab label="&zotero.tabs.notes.label;"/>
+					<tab label="&zotero.tabs.tags.label;"/>
+					<tab label="&zotero.tabs.related.label;"/>
+				</tabs>
+					<tabpanels id="zotero-view-item" flex="1">
+						<tabpanel>
+							<zoteroitembox id="zotero-editpane-item-box" flex="1"/>
+						</tabpanel>
+						
+						<tabpanel flex="1" orient="vertical">
+							<vbox flex="1" class="zotero-box">
+								<hbox align="center">
+									<label id="zotero-editpane-notes-label"/>
+									<button id="zotero-editpane-notes-add" label="&zotero.item.add;" oncommand="ZoteroItemPane.addNote(event.shiftKey);"/>
+								</hbox>
+								<grid flex="1">
+									<columns>
+										<column flex="1"/>
+										<column/>
+									</columns>
+									<rows id="zotero-editpane-dynamic-notes" flex="1"/>
+								</grid>
+							</vbox>
+						</tabpanel>
+						
+						<tabpanel>
+							<tagsbox id="zotero-editpane-tags" flex="1"/>
+						</tabpanel>
+						
+						<tabpanel>
+							<seealsobox id="zotero-editpane-related" flex="1"/>
+						</tabpanel>
+					</tabpanels>
+			</tabbox>
+			
+			<!-- Note item -->
+			<groupbox id="zotero-view-note" flex="1">
+				<zoteronoteeditor id="zotero-note-editor" flex="1" notitle="1" previousfocus="zotero-items-tree"/>
+				<button id="zotero-view-note-button" label="&zotero.notes.separate;" oncommand="ZoteroPane_Local.openNoteWindow(this.getAttribute('noteID')); if(this.hasAttribute('sourceID')) ZoteroPane_Local.selectItem(this.getAttribute('sourceID'));"/>
+			</groupbox>
+			
+			<!-- Attachment item -->
+			<groupbox>
+				<zoteroattachmentbox id="zotero-attachment-box" flex="1"/>
+			</groupbox>
+			
+			<!-- Duplicate merging -->
+			<vbox id="zotero-duplicates-merge-pane" flex="1">
+				<groupbox>
+					<button id="zotero-duplicates-merge-button" oncommand="Zotero_Duplicates_Pane.merge()"/>
+				</groupbox>
+				
+				<groupbox id="zotero-duplicates-merge-version-select">
+					<description>&zotero.duplicatesMerge.versionSelect;</description>
+					<hbox>
+						<listbox id="zotero-duplicates-merge-original-date" onselect="Zotero_Duplicates_Pane.setMaster(this.selectedIndex)" rows="0"/>
+					</hbox>
+				</groupbox>
+				
+				<groupbox flex="1">
+					<description id="zotero-duplicates-merge-field-select">&zotero.duplicatesMerge.fieldSelect;</description>
+					<zoteroitembox id="zotero-duplicates-merge-item-box" flex="1"/>
+				</groupbox>
+			</vbox>
+		</deck>
+	</vbox>
+</overlay>

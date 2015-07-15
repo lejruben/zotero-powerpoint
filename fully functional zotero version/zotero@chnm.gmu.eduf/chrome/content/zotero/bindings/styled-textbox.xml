@@ -1,0 +1,533 @@
+<?xml version="1.0"?>
+<!--
+    ***** BEGIN LICENSE BLOCK *****
+    
+    Copyright © 2009 Center for History and New Media
+                     George Mason University, Fairfax, Virginia, USA
+                     http://zotero.org
+    
+    This file is part of Zotero.
+    
+    Zotero is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    
+    Zotero is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+    
+    You should have received a copy of the GNU Affero General Public License
+    along with Zotero.  If not, see <http://www.gnu.org/licenses/>.
+    
+    ***** END LICENSE BLOCK *****
+-->
+
+<!DOCTYPE bindings SYSTEM "chrome://zotero/locale/zotero.dtd">
+<bindings xmlns="http://www.mozilla.org/xbl"
+          xmlns:html="http://www.w3.org/1999/xhtml"
+		  xmlns:xbl="http://www.mozilla.org/xbl"
+		  xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<binding id="styled-textbox">
+		<implementation>
+			<field name="_editable"/>
+			<field name="_mode"/>
+			<field name="_format"/>
+			<field name="_loadHandler"/>
+			<field name="_commandString"/>
+			<field name="_eventHandler"/>
+			<field name="_editor"/>
+			<field name="_value"/>
+			<field name="_timer"/>
+			<field name="_focus"/>
+			<field name="_constructed"/>
+			<field name="_loadOnConstruct"/>
+			
+			<constructor><![CDATA[
+				this.mode = this.getAttribute('mode');
+				
+				this._iframe = document.getAnonymousElementByAttribute(this, "anonid", "rt-view");
+				
+				this._rtfMap = {
+					"\\":"\\\\",
+					"<em>":"\\i ",
+					"</em>":"\\i0{}",
+					"<i>":"\\i ",
+					"</i>":"\\i0{}",
+					"<strong>":"\\b ",
+					"</strong>":"\\b0{}",
+					"<b>":"\\b ",
+					"</b>":"\\b0{}",
+					"<br />":"\x0B",
+					// there's no way to mimic a tab stop in CSS without
+					// tables, which wouldn't work here.
+					'<span class="tab">&nbsp;</span>':"\\tab{}"
+				};
+				
+				this._rtfToHtmlMap = [
+					[/\\uc0\{?\\u([0-9]+)\}?(?:{}| )?/g, function(wholeStr, aCode) { return String.fromCharCode(aCode) }],
+					[/\\tab(?:\{\}| )/g, '<span class="tab">&nbsp;</span>'],
+					[/(?:\\par{}|\\\r?\n)/g, "</p><p>"],
+					[/\\super (.*?)\\nosupersub{}/g, "<sup>$1</sup>"],
+					[/\\sub (.*?)\\nosupersub{}/g, "<sub>$1</sub>"],
+					// for backwards compatibility with Zotero < 2.1
+					["\\i0 ", "</em>"],
+					["\\b0 ", "</strong>"]
+				];
+				
+				this._htmlToRtfMap = [
+					[/"(\w)/, "“$1"],
+					[/([\w,.?!])"/, "$1”"],
+					["<p>", ""],
+					//[/<\/p>(?!\s*$)/g, "\\par{}"],
+					[/<\/?div[^>]*>/g, ""],
+					["<sup>", "\\super "],
+					["</sup>", "\\nosupersub{}"],
+					["<sub>", "\\sub "],
+					["</sub>", "\\nosupersub{}"]
+				];
+				
+				this._rtfRexMap = [
+					["<span style=\"font-variant:small-caps;\">",
+					 /small-caps/,
+					 "\\scaps ",
+					 "\\scaps0{}"
+					],
+					["<span style=\"text-decoration:underline;\">",
+					 /underline/,
+					 "\\ul ",
+					 "\\ul0{}"
+					]
+				]
+
+				this._constructed = true;
+				
+				// Don't load if a value hasn't yet been set
+				if (this._loadOnConstruct) {
+					this._load();
+				}
+			]]></constructor>
+			
+			<property name="mode">
+				<getter><![CDATA[
+					if (!this._mode) {
+						throw ("mode is not defined in styled-textbox.xml");
+					}
+					return this._mode;
+				]]></getter>
+				<setter><![CDATA[
+					Zotero.debug("Setting mode to " + val);
+					switch (val) {
+						case 'note':
+							var self = this;
+							
+							this._eventHandler = function (event) {
+								// Necessary in Fx32+
+								if (event.wrappedJSObject) {
+									event = event.wrappedJSObject;
+								}
+								
+								//Zotero.debug(event.type);
+								switch (event.type) {
+									case 'keydown':
+										// Intercept and manually trigger redo for Cmd-Shift-Z,
+										// which keeps it from toggling the Zotero pane instead
+										if (Zotero.isMac && event.metaKey && event.shiftKey && !event.ctrlKey
+												&& !event.altKey && event.keyCode == 90) {
+											event.stopPropagation();
+											event.preventDefault();
+											self.redo();
+											return;
+										}
+										break;
+									
+									case 'keypress':
+										// Ignore keypresses that don't change
+										// any text
+										if (!event.which &&
+												event.keyCode != event.DOM_VK_DELETE &&
+												event.keyCode != event.DOM_VK_BACK_SPACE) {
+											//Zotero.debug("Not a char");
+											return;
+										}
+										break;
+									
+									case 'change':
+										break;
+
+									case 'openlink':
+										var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+											.getService(Components.interfaces.nsIWindowMediator);
+										win = wm.getMostRecentWindow('navigator:browser');
+										win.ZoteroPane.loadURI(event.target.href, event.modifierKeys);
+										break;
+									
+									default:
+										return;
+								}
+								
+								if (self._timer) {
+									clearTimeout(self._timer);
+								}
+								
+								// Get the command event
+								self._timer = self.timeout && setTimeout(function () {
+									var attr = self.getAttribute('oncommand');
+									attr = attr.replace('this', 'thisObj');
+									var func = new Function('thisObj', 'event', attr);
+									func(self, event);
+								}, self.timeout);
+								
+								return true;
+							};
+							break;
+						
+						case 'integration':
+							break;
+							
+						default:
+							throw ("Invalid mode '" + val + "' in styled-textbox.xml");
+					}
+					return this._mode = val;
+				]]></setter>
+			</property>
+			
+			<!-- Sets or returns formatting (currently, HTML or Integration) of rich text box -->
+			<property name="initialized">
+				<getter><![CDATA[
+					return !!this._editor;
+				]]></getter>
+			</property>	
+			
+			<!-- Sets or returns formatting (currently, HTML or Integration) of rich text box -->
+			<property name="format">
+				<getter><![CDATA[
+					return this._format;
+				]]></getter>
+				<setter><![CDATA[
+					return this._format = val;
+				]]></setter>
+			</property>
+			
+			<!-- Sets or returns contents of rich text box -->
+			<property name="value">
+				<getter><![CDATA[
+					const highcharRe = /[\x7F-\uFFFF]/g;
+					var output = this._editor.getContent();
+					
+					if(this._format == "RTF") {
+						// strip divs
+						if(output.substr(0, 5) == "<div>" && output.substr(-6) == "</div>") {
+							output = output.substr(5, output.length-6);
+						}
+						
+						// do appropriate replacement operations
+						for(var needle in this._rtfMap) {
+							output = output.replace(needle, this._rtfMap[needle], "g"); 
+						}
+						
+						// Preserve small caps and underlining
+						for each (var tagspec in this._rtfRexMap){
+							var l = output.split(/(<\/?span[^>]*>)/);
+							var current_level = 0;
+							var tag_level = [];
+							for (var pos=1; pos<l.length; pos+=2) {
+								var tag = l[pos];
+								if (tag[1] == "/") {
+									current_level--;
+									if (current_level == tag_level[tag_level.length-1]) {
+										tag_level.pop();
+										l[pos] = tagspec[3];
+									}
+								} else {
+									if (l[pos].match(tagspec[1])) {
+										l[pos] = tagspec[2];
+										tag_level.push(current_level);
+									}
+									current_level++;
+								};
+							};
+							output = l.join("");
+						}
+						
+						for each(var entry in this._htmlToRtfMap) {
+							output = output.replace(entry[0], entry[1], "g");
+						}
+						
+						output = Zotero.Utilities.unescapeHTML(output.replace(" ", "&nbsp;", "g"))
+							.replace("\u00A0", " ", "g")
+							.replace(highcharRe, function(aChar) { return "\\uc0\\u"+aChar.charCodeAt(0).toString()+"{}" });
+						output = Zotero.Utilities.trim(output);
+					}
+					
+					return output;
+				]]></getter>
+				<setter><![CDATA[
+					if (self._timer) {
+						clearTimeout(self._timer);
+					}
+					
+					if(!this._editor) {
+						Zotero.debug('No editor yet');
+						
+						this._value = val;
+						if (!this._constructed) {
+							Zotero.debug('Styled textbox not yet constructed', 2);
+							this._loadOnConstruct = true;
+						}
+						else if (!this._loaded) {
+							this._load();
+						}
+						return ;
+					}
+					
+					if (this.value == val) {
+						Zotero.debug("Textbox value hasn't changed");
+						return;
+					}
+					
+					var html = val;
+					if(this._format == "RTF") {
+						var bodyStyle = "";
+						if(html.substr(0, 3) == "\\li") {
+							// try to show paragraph formatting
+							var returnIndex = html.indexOf("\r\n");
+							
+							var tags = html.substr(1, returnIndex).split("\\");
+							html = html.substr(returnIndex+2);
+							
+							for(var i=0; i<tags.length; i++) {
+								var tagName = tags[i].substr(0, 2);
+								var tagValue = tags[i].substring(2, tags[i].length-1);
+								if(tagName == "li") {
+									var li = parseInt(tagValue, 10);
+								} else if(tagName == "fi") {
+									var fi = parseInt(tagValue, 10);
+								}
+							}
+							
+							// don't negatively indent
+							if(fi < 0 && li == 0) li = -fi;
+							
+							bodyStyle = "margin-left:"+(li/20+6)+"pt;text-indent:"+(fi/20)+"pt;";
+						}
+						
+						// do appropriate replacement operations
+						for(var needle in this._rtfMap) {
+							if(this._rtfMap[needle]) {
+								html = html.replace(this._rtfMap[needle], needle, "g");
+							}
+						}
+						for each (var tagspec in this._rtfRexMap){
+							html = html.replace(tagspec[2], tagspec[0], "g");
+							html = html.replace(tagspec[3], "</span>", "g");
+						}
+						for each(var entry in this._rtfToHtmlMap) {
+							html = html.replace(entry[0], entry[1], "g");
+						}
+						html = '<div style="'+bodyStyle+'"><p>'+html+"</p></div>";
+					}
+					
+					this._editor.setContent(html);
+					return val;
+				]]></setter>
+			</property>
+			
+			<property name="timeout"
+					onset="this.setAttribute('timeout', val); return val;"
+					onget="return parseInt(this.getAttribute('timeout')) || 0;"/>
+			
+			<method name="focus">
+				<body>
+				<![CDATA[
+					if (this._editor) {
+						this._iframe.focus();
+						this._editor.focus();
+						this._focus = false;
+					}
+					else {
+						this._focus = true;
+					}
+				]]>
+				</body>
+			</method>
+			
+			<method name="redo">
+				<body>
+				<![CDATA[
+					this._editor.undoManager.redo();
+				]]>
+				</body>
+			</method>
+			
+			<method name="clearUndo">
+				<body>
+				<![CDATA[
+					this._editor.undoManager.clear();
+				]]>
+				</body>
+			</method>
+			
+			<field name="_loaded"/>
+			<method name="_load">
+				<body>
+				<![CDATA[
+					this._loaded = true;
+					
+					// Unless we find a better way, use a separate HTML file
+					// for read-only mode
+					var htmlFile = this.mode + (this.getAttribute('readonly') != 'true' ? "" : "view");
+					
+					var ios = Components.classes["@mozilla.org/network/io-service;1"].
+						getService(Components.interfaces.nsIIOService);
+					var uri = ios.newURI("resource://zotero/tinymce/" + htmlFile + ".html", null, null);
+					
+					// Pass directionality (LTR/RTL) in URL
+					uri.spec += "?dir=" + Zotero.dir;
+					
+					Zotero.debug("Loading " + uri.spec);
+					
+					// Register handler for deferred setting of content
+					var self = this;
+					var matchTo = null;
+					var listener = function(e) {
+						var win = self._iframe.contentWindow;
+						var SJOW = win.wrappedJSObject;
+						
+						// only fire if the target matches, or _zoteroMatchTo, which we set last
+						// time the target matched, matches
+						if(e.target !== self._iframe.contentDocument
+							&& (!SJOW._zoteroMatchTo || SJOW._zoteroMatchTo !== matchTo)) return;
+						
+						if (!SJOW.tinyMCE) {
+							var exts = Zotero.getInstalledExtensions(function(exts) {
+								for each(var ext in exts) {
+									if (ext.indexOf('NoScript') != -1 && ext.indexOf('disabled') == -1) {
+										var doc = win.document;
+										var div = doc.getElementById('tinymce');
+										var warning = doc.createElement('div');
+										warning.id = 'noScriptWarning';
+										var str = "The NoScript extension is preventing Zotero "
+											+ "from displaying notes. To use NoScript and Zotero together, "
+											+ "whitelist the 'file:' scheme in the NoScript preferences "
+											+ "and restart " + Zotero.appName + ".";
+										warning.appendChild(document.createTextNode(str));
+										div.appendChild(warning);
+										break;
+									}
+								}
+							});
+							return;
+						}
+						
+						if (!SJOW.zoteroInit) {
+							SJOW.zoteroInit = function(editor) {
+								// Necessary in Fx32+
+								if (editor.wrappedJSObject) {
+									self._editor = editor.wrappedJSObject;
+								}
+								else {
+									self._editor = editor;
+								}
+								if (self._value) {
+									self.value = self._value;
+								}
+								if (self._focus) {
+									self._iframe.focus();
+									self._editor.focus();
+									self._focus = false;
+								}
+								
+								// Add CSS rules to notes
+								if (self.mode == 'note') {
+									let fontSize = Zotero.Prefs.get('note.fontSize');
+									// Fix empty old font prefs before a value was enforced
+									if (fontSize < 6) {
+										fontSize = 11;
+									}
+									var css = "body#zotero-tinymce-note.mceContentBody, "
+										+ "body#zotero-tinymce-note.mceContentBody p, "
+										+ "body#zotero-tinymce-note.mceContentBody th, "
+										+ "body#zotero-tinymce-note.mceContentBody td, "
+										+ "body#zotero-tinymce-note.mceContentBody pre { "
+											+ "font-size: " + fontSize + "px; "
+										+ "} "
+										+ "body#zotero-tinymce-note.mceContentBody, "
+										+ "body#zotero-tinymce-note.mceContentBody p { "
+											+ "font-family: "
+											+ Zotero.Prefs.get('note.fontFamily') + "; "
+										+ "}"
+										+ Zotero.Prefs.get('note.css');
+									
+									var doc = editor.contentDocument;
+									var head = doc.getElementsByTagName("head")[0];
+									var style = doc.createElement("style");
+									style.innerHTML = css;
+									head.appendChild(style);
+								}
+								
+								// Dispatch a tinymceInitialized event
+								var ev = document.createEvent('HTMLEvents');
+								ev.initEvent('tinymceInitialized', true, true);
+								self.dispatchEvent(ev);
+							};
+						}
+						
+						var editor = SJOW.tinyMCE.get("tinymce");
+						if (!editor) {
+							Zotero.debug("editor not ready");
+							
+							// this is a hack; I'm not sure why we can't identify the event target
+							// next time without it, but apparently we can't
+							matchTo = Zotero.randomString();
+							SJOW._zoteroMatchTo = matchTo;
+							
+							// Not ready yet
+							return;
+						}
+						
+						if(window.ZoteroTab) {
+							ZoteroTab.containerWindow.gBrowser.removeEventListener("DOMContentLoaded", listener, true);
+						} else {
+							self._iframe.removeEventListener("DOMContentLoaded", listener, false);
+						}
+						
+						if (self._eventHandler) {
+							win.wrappedJSObject.zoteroHandleEvent = self._eventHandler;
+						}
+						
+						// Run Cut/Copy/Paste with chrome privileges
+						win.wrappedJSObject.zoteroExecCommand = function (doc, command, ui, value) {
+							return doc.execCommand(command, ui, value);
+						}
+						
+						win.wrappedJSObject.zoteroFixWindow = function (win) {
+							win.locationbar.visible = false;
+							win.statusbar.visible = false;
+						}
+					};
+					
+					if(window.ZoteroTab) {
+						// I'm not sure why it's necessary to attach the event listener to the 
+						// container window to get it to fire on the tab, but apparently it is...
+						ZoteroTab.containerBrowser.addEventListener("DOMContentLoaded", listener, true);
+					} else {
+						this._iframe.addEventListener("DOMContentLoaded", listener, false);
+					}
+					
+					this._iframe.webNavigation.loadURI(uri.spec,
+						Components.interfaces.nsIWebNavigation.LOAD_FLAGS_BYPASS_HISTORY, null, null, null);
+				]]>
+				</body>
+			</method>
+			
+		</implementation>
+		
+		<content>
+			<xul:iframe flex="1" anonid="rt-view" class="rt-view" type="content"
+				xbl:inherits="onfocus,onblur,flex,width,height,hidden"
+				style="overflow: hidden"/>
+		</content>
+	</binding>
+</bindings>

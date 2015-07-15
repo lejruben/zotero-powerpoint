@@ -1,0 +1,305 @@
+<?xml version="1.0"?>
+<!--
+    ***** BEGIN LICENSE BLOCK *****
+    
+    Copyright © 2009 Center for History and New Media
+                     George Mason University, Fairfax, Virginia, USA
+                     http://zotero.org
+    
+    This file is part of Zotero.
+    
+    Zotero is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    
+    Zotero is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+    
+    You should have received a copy of the GNU Affero General Public License
+    along with Zotero.  If not, see <http://www.gnu.org/licenses/>.
+    
+    ***** END LICENSE BLOCK *****
+-->
+
+<!DOCTYPE bindings SYSTEM "chrome://zotero/locale/zotero.dtd">
+
+<bindings 	xmlns="http://www.mozilla.org/xbl"
+			xmlns:xbl="http://www.mozilla.org/xbl"
+			xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<binding id="seealso-box">
+		<implementation>
+			<!-- Modes are predefined settings groups for particular tasks -->
+			<field name="_mode">"view"</field>
+			<property name="mode" onget="return this._mode;">
+				<setter>
+				<![CDATA[
+					this.clickable = false;
+					this.editable = false;
+					
+					switch (val) {
+						case 'view':
+						case 'merge':
+						case 'mergeedit':
+							break;
+						
+						case 'edit':
+							this.clickable = true;
+							this.editable = true;
+							//this.clickHandler = this.showEditor;
+							//this.blurHandler = this.hideEditor;
+							break;
+						
+						default:
+							throw ("Invalid mode '" + val + "' in relatedbox.xml");
+					}
+					
+					this._mode = val;
+					document.getAnonymousNodes(this)[0].setAttribute('mode', val);
+				]]>
+				</setter>
+			</property>
+			
+			<field name="itemRef"/>
+			<property name="item" onget="return this.itemRef;">
+				<setter>
+					<![CDATA[
+						this.itemRef = val;
+						this.reload();
+					]]>
+				</setter>
+			</property>
+			<property name="summary">
+				<getter>
+					<![CDATA[
+						var r = "";
+					
+						if (this.item) {
+							var related = this.item.relatedItemsBidirectional;
+							if (related) {
+								related = Zotero.Items.get(related);
+								for(var i = 0; i < related.length; i++) {
+									r = r + related[i].getDisplayTitle() + ", ";
+								}
+								r = r.substr(0,r.length-2);
+							}
+						}
+					
+						return r;
+					]]>
+				</getter>
+			</property>
+			<method name="reload">
+				<body>
+					<![CDATA[
+						var addButton = this.id('addButton');
+						addButton.hidden = !this.editable;
+						
+						var rows = this.id('seeAlsoRows');
+						while(rows.hasChildNodes())
+							rows.removeChild(rows.firstChild);
+						
+						if (this.item) {
+							var related = this.item.relatedItemsBidirectional;
+							if (related) {
+								related = Zotero.Items.get(related);
+								for (var i = 0; i < related.length; i++) {
+									var icon= document.createElement("image");
+									icon.className = "zotero-box-icon";
+									var type = Zotero.ItemTypes.getName(related[i].itemTypeID);
+									if (type=='attachment')
+									{
+										switch (related[i].getAttachmentLinkMode())
+										{
+											case Zotero.Attachments.LINK_MODE_LINKED_URL:
+												type += '-web-link';
+												break;
+											
+											case Zotero.Attachments.LINK_MODE_IMPORTED_URL:
+												type += '-snapshot';
+												break;
+											
+											case Zotero.Attachments.LINK_MODE_LINKED_FILE:
+												type += '-link';
+												break;
+											
+											case Zotero.Attachments.LINK_MODE_IMPORTED_FILE:
+												type += '-file';
+												break;
+										}
+									}
+									icon.setAttribute('src','chrome://zotero/skin/treeitem-' + type + '.png');
+							
+									var label = document.createElement("label");
+									label.className = "zotero-box-label";
+									label.setAttribute('value', related[i].getDisplayTitle());
+									label.setAttribute('crop','end');
+									label.setAttribute('flex','1');
+									
+									var box = document.createElement('box');
+									box.setAttribute('onclick',
+										"document.getBindingParent(this).showItem('" + related[i].id + "')");
+									box.setAttribute('class','zotero-clicky');
+									box.setAttribute('flex','1');
+									box.appendChild(icon);
+									box.appendChild(label);
+									
+									if (this.editable) {
+										var remove = document.createElement("label");
+										remove.setAttribute('value','-');
+										remove.setAttribute('onclick',
+											"document.getBindingParent(this).remove('" + related[i].id + "');");
+										remove.setAttribute('class','zotero-clicky zotero-clicky-minus');
+									}
+									
+									var row = document.createElement("row");
+									row.appendChild(box);
+									if (this.editable) {
+										row.appendChild(remove);
+									}
+									row.setAttribute('id', 'seealso-' + related[i].id);
+									rows.appendChild(row);		
+								}
+								this.updateCount(related.length);
+							}
+							else
+							{
+								this.updateCount();
+							}
+						}
+					]]>
+				</body>
+			</method>
+			<method name="add">
+				<body>
+					<![CDATA[
+						var io = {dataIn: null, dataOut: null};
+						
+						window.openDialog('chrome://zotero/content/selectItemsDialog.xul', '',
+								'chrome,dialog=no,modal,centerscreen,resizable=yes', io);
+						
+						if(io.dataOut) {
+							if (io.dataOut.length) {
+								var relItem = Zotero.Items.get(io.dataOut[0]);
+								if (relItem.libraryID != this.item.libraryID) {
+									// FIXME
+									var ps = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
+															.getService(Components.interfaces.nsIPromptService);
+									ps.alert(null, "", "You cannot relate items in different libraries in this Zotero release.");
+									return;
+								}
+							}
+							for(var i = 0; i < io.dataOut.length; i++) {
+								this.item.addRelatedItem(io.dataOut[i]);
+							}
+							this.item.save();
+						}
+					]]>
+				</body>
+			</method>
+			<method name="remove">
+				<parameter name="id"/>
+				<body>
+					<![CDATA[
+						if(id) {
+							// TODO: set attribute on reload to determine
+							// which of these is necessary
+							this.item.removeRelatedItem(id);
+							this.item.save();
+							
+							var item = Zotero.Items.get(id);
+							item.removeRelatedItem(this.item.id);
+							item.save();
+						}
+					]]>
+				</body>
+			</method>
+			<method name="showItem">
+				<parameter name="id"/>
+				<body>
+					<![CDATA[
+						if(id)
+						{
+							var p;
+							if(window.ZoteroPane_Local)
+							{
+								p = window.ZoteroPane_Local;
+							}
+							else
+							{
+								var win;
+														
+								if(window.opener && window.opener.ZoteroPane)
+								{
+									win = window.opener;
+								}
+								else
+								{
+									var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+														.getService(Components.interfaces.nsIWindowMediator);
+									win = wm.getMostRecentWindow('navigator:browser');
+									if(!win)
+										return;
+								}
+								
+								p = win.ZoteroPane;
+							}
+								
+							p.selectItem(id);
+						}
+					]]>
+				</body>
+			</method>
+			<method name="updateCount">
+				<parameter name="count"/>
+				<body>
+					<![CDATA[
+						if (count == null) {
+							var count = this.item.relatedItemsBidirectional.length;
+						}
+						
+						var str = 'pane.item.related.count.';
+						switch (count){
+							case 0:
+								str += 'zero';
+								break;
+							case 1:
+								str += 'singular';
+								break;
+							default:
+								str += 'plural';
+								break;
+						}
+						this.id('seeAlsoNum').value = Zotero.getString(str, [count]);
+					]]>
+				</body>
+			</method>
+			<method name="id">
+				<parameter name="id"/>
+				<body>
+					<![CDATA[
+						return document.getAnonymousNodes(this)[0].getElementsByAttribute('id',id)[0];
+					]]>
+				</body>
+			</method>
+		</implementation>
+		<content>
+			<xul:vbox xbl:inherits="flex" class="zotero-box">
+				<xul:hbox align="center">
+					<xul:label id="seeAlsoNum"/>
+					<xul:button id="addButton" label="&zotero.item.add;"
+						oncommand="this.parentNode.parentNode.parentNode.add();"/>
+				</xul:hbox>
+				<xul:grid flex="1">
+					<xul:columns>
+						<xul:column flex="1"/>
+						<xul:column/>
+					</xul:columns>
+					<xul:rows id="seeAlsoRows"/>
+				</xul:grid>
+			</xul:vbox>
+		</content>
+	</binding>
+</bindings>

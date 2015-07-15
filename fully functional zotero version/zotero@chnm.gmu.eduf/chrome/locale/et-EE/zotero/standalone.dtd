@@ -1,0 +1,101 @@
+<!ENTITY preferencesCmdMac.label "Seaded…">
+<!ENTITY preferencesCmdMac.commandkey ",">
+<!ENTITY servicesMenuMac.label "Teenused">
+<!ENTITY hideThisAppCmdMac.label "Peita &brandShortName;">
+<!ENTITY hideThisAppCmdMac.commandkey "H">
+<!ENTITY hideOtherAppsCmdMac.label "Teised peita">
+<!ENTITY hideOtherAppsCmdMac.commandkey "H">
+<!ENTITY showAllAppsCmdMac.label "Näidata kõiki">
+<!ENTITY quitApplicationCmdMac.label "Väljuda Zoterost">
+<!ENTITY quitApplicationCmdMac.key "Q">
+
+
+<!ENTITY fileMenu.label "Fail">
+<!ENTITY fileMenu.accesskey "F">
+<!ENTITY saveCmd.label "Save…">
+<!ENTITY saveCmd.key "S">
+<!ENTITY saveCmd.accesskey "A">
+<!ENTITY pageSetupCmd.label "Page Setup…">
+<!ENTITY pageSetupCmd.accesskey "U">
+<!ENTITY printCmd.label "Print…">
+<!ENTITY printCmd.key "P">
+<!ENTITY printCmd.accesskey "P">
+<!ENTITY closeCmd.label "Sulgeda">
+<!ENTITY closeCmd.key "W">
+<!ENTITY closeCmd.accesskey "C">
+<!ENTITY quitApplicationCmdWin.label "Väljuda">
+<!ENTITY quitApplicationCmdWin.accesskey "x">
+<!ENTITY quitApplicationCmd.label "Väljuda">
+<!ENTITY quitApplicationCmd.accesskey "Q">
+
+
+<!ENTITY editMenu.label "Toimeta">
+<!ENTITY editMenu.accesskey "E">
+<!ENTITY undoCmd.label "Taastada">
+<!ENTITY undoCmd.key "Z">
+<!ENTITY undoCmd.accesskey "U">
+<!ENTITY redoCmd.label "Teha uuesti">
+<!ENTITY redoCmd.key "Y">
+<!ENTITY redoCmd.accesskey "R">
+<!ENTITY cutCmd.label "Lõigata">
+<!ENTITY cutCmd.key "X">
+<!ENTITY cutCmd.accesskey "t">
+<!ENTITY copyCmd.label "Kopeerida">
+<!ENTITY copyCmd.key "C">
+<!ENTITY copyCmd.accesskey "C">
+<!ENTITY copyCitationCmd.label "Viite kopeerimine">
+<!ENTITY copyBibliographyCmd.label "Bibliograafia kopeerimine">
+<!ENTITY pasteCmd.label "Asetada">
+<!ENTITY pasteCmd.key "V">
+<!ENTITY pasteCmd.accesskey "P">
+<!ENTITY deleteCmd.label "Kustutada">
+<!ENTITY deleteCmd.key "D">
+<!ENTITY deleteCmd.accesskey "D">
+<!ENTITY selectAllCmd.label "Valida kõik">
+<!ENTITY selectAllCmd.key "A">
+<!ENTITY selectAllCmd.accesskey "A">
+<!ENTITY preferencesCmd.label "Preferences">
+<!ENTITY preferencesCmd.accesskey "O">
+<!ENTITY preferencesCmdUnix.label "Eelistused">
+<!ENTITY preferencesCmdUnix.accesskey "n">
+<!ENTITY findCmd.label "Otsida">
+<!ENTITY findCmd.accesskey "F">
+<!ENTITY findCmd.commandkey "f">
+<!ENTITY bidiSwitchPageDirectionItem.label "Lehekülje orientatsiooni muutmine">
+<!ENTITY bidiSwitchPageDirectionItem.accesskey "g">
+<!ENTITY bidiSwitchTextDirectionItem.label "Teksti orientatsiooni muutmine">
+<!ENTITY bidiSwitchTextDirectionItem.accesskey "w">
+<!ENTITY bidiSwitchTextDirectionItem.commandkey "X">
+
+
+<!ENTITY toolsMenu.label "Tööriistad">
+<!ENTITY toolsMenu.accesskey "T">
+<!ENTITY addons.label "Lisad">
+
+
+<!ENTITY minimizeWindow.key "m">
+<!ENTITY minimizeWindow.label "Minimeerida">
+<!ENTITY bringAllToFront.label "Kõik nähtavale tuua">
+<!ENTITY zoomWindow.label "Suurenda">
+<!ENTITY windowMenu.label "Aken">
+
+
+<!ENTITY helpMenu.label "Abi">
+<!ENTITY helpMenu.accesskey "H">
+
+
+<!ENTITY helpMenuWin.label "Abi">
+<!ENTITY helpMenuWin.accesskey "H">
+<!ENTITY helpMac.commandkey "?">
+<!ENTITY aboutProduct.label "Teave &brandShortName; kohta">
+<!ENTITY aboutProduct.accesskey "A">
+<!ENTITY productHelp.label "Kasutajatugi ja dokumentatsioon">
+<!ENTITY productHelp.accesskey "H">
+<!ENTITY helpTroubleshootingInfo.label "Info probleemide lahendamise kohta">
+<!ENTITY helpTroubleshootingInfo.accesskey "T">
+<!ENTITY helpFeedbackPage.label "Tagasiside saatmine…">
+<!ENTITY helpFeedbackPage.accesskey "S">
+<!ENTITY helpReportErrors.label "Vigadest Zoterole teatamine...">
+<!ENTITY helpReportErrors.accesskey "R">
+<!ENTITY helpCheckForUpdates.label "Uuenduste kontrollimine">
+<!ENTITY helpCheckForUpdates.accesskey "U">

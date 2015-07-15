@@ -1,0 +1,101 @@
+<!ENTITY preferencesCmdMac.label "Настройки…">
+<!ENTITY preferencesCmdMac.commandkey ",">
+<!ENTITY servicesMenuMac.label "Сервисы">
+<!ENTITY hideThisAppCmdMac.label "Скрыть &brandShortName;">
+<!ENTITY hideThisAppCmdMac.commandkey "H">
+<!ENTITY hideOtherAppsCmdMac.label "Скрыть другие">
+<!ENTITY hideOtherAppsCmdMac.commandkey "H">
+<!ENTITY showAllAppsCmdMac.label "Показать все">
+<!ENTITY quitApplicationCmdMac.label "Выход из Zotero">
+<!ENTITY quitApplicationCmdMac.key "Q">
+
+
+<!ENTITY fileMenu.label "Файл">
+<!ENTITY fileMenu.accesskey "F">
+<!ENTITY saveCmd.label "Сохранить...">
+<!ENTITY saveCmd.key "S">
+<!ENTITY saveCmd.accesskey "A">
+<!ENTITY pageSetupCmd.label "Параметры печати...">
+<!ENTITY pageSetupCmd.accesskey "U">
+<!ENTITY printCmd.label "Печать...">
+<!ENTITY printCmd.key "P">
+<!ENTITY printCmd.accesskey "P">
+<!ENTITY closeCmd.label "Закрыть">
+<!ENTITY closeCmd.key "W">
+<!ENTITY closeCmd.accesskey "C">
+<!ENTITY quitApplicationCmdWin.label "Выход">
+<!ENTITY quitApplicationCmdWin.accesskey "x">
+<!ENTITY quitApplicationCmd.label "Выйти">
+<!ENTITY quitApplicationCmd.accesskey "Q">
+
+
+<!ENTITY editMenu.label "Правка">
+<!ENTITY editMenu.accesskey "E">
+<!ENTITY undoCmd.label "Отменить">
+<!ENTITY undoCmd.key "Z">
+<!ENTITY undoCmd.accesskey "U">
+<!ENTITY redoCmd.label "Повторить">
+<!ENTITY redoCmd.key "Y">
+<!ENTITY redoCmd.accesskey "R">
+<!ENTITY cutCmd.label "Вырезать">
+<!ENTITY cutCmd.key "X">
+<!ENTITY cutCmd.accesskey "t">
+<!ENTITY copyCmd.label "Копировать">
+<!ENTITY copyCmd.key "C">
+<!ENTITY copyCmd.accesskey "C">
+<!ENTITY copyCitationCmd.label "Копировать цитату">
+<!ENTITY copyBibliographyCmd.label "Копировать библиографию">
+<!ENTITY pasteCmd.label "Вставить">
+<!ENTITY pasteCmd.key "V">
+<!ENTITY pasteCmd.accesskey "P">
+<!ENTITY deleteCmd.label "Удалить">
+<!ENTITY deleteCmd.key "D">
+<!ENTITY deleteCmd.accesskey "D">
+<!ENTITY selectAllCmd.label "Выбрать все">
+<!ENTITY selectAllCmd.key "А">
+<!ENTITY selectAllCmd.accesskey "А">
+<!ENTITY preferencesCmd.label "Настройки">
+<!ENTITY preferencesCmd.accesskey "O">
+<!ENTITY preferencesCmdUnix.label "Настройки">
+<!ENTITY preferencesCmdUnix.accesskey "n">
+<!ENTITY findCmd.label "Найти">
+<!ENTITY findCmd.accesskey "F">
+<!ENTITY findCmd.commandkey "f">
+<!ENTITY bidiSwitchPageDirectionItem.label "Сменить направление страницы">
+<!ENTITY bidiSwitchPageDirectionItem.accesskey "g">
+<!ENTITY bidiSwitchTextDirectionItem.label "Сменить направление текста">
+<!ENTITY bidiSwitchTextDirectionItem.accesskey "w">
+<!ENTITY bidiSwitchTextDirectionItem.commandkey "X">
+
+
+<!ENTITY toolsMenu.label "Инструменты">
+<!ENTITY toolsMenu.accesskey "T">
+<!ENTITY addons.label "Дополнения">
+
+
+<!ENTITY minimizeWindow.key "m">
+<!ENTITY minimizeWindow.label "Свернуть">
+<!ENTITY bringAllToFront.label "Переместить все вперед">
+<!ENTITY zoomWindow.label "Масштаб">
+<!ENTITY windowMenu.label "Окно">
+
+
+<!ENTITY helpMenu.label "Справка">
+<!ENTITY helpMenu.accesskey "H">
+
+
+<!ENTITY helpMenuWin.label "Справка">
+<!ENTITY helpMenuWin.accesskey "H">
+<!ENTITY helpMac.commandkey "?">
+<!ENTITY aboutProduct.label "О &brandShortName;">
+<!ENTITY aboutProduct.accesskey "A">
+<!ENTITY productHelp.label "Техническая поддержка и документация">
+<!ENTITY productHelp.accesskey "D">
+<!ENTITY helpTroubleshootingInfo.label "Информация об устранении ошибок">
+<!ENTITY helpTroubleshootingInfo.accesskey "T">
+<!ENTITY helpFeedbackPage.label "Отправить отзыв...">
+<!ENTITY helpFeedbackPage.accesskey "S">
+<!ENTITY helpReportErrors.label "Отправить сообщение об ошибке в Zotero...">
+<!ENTITY helpReportErrors.accesskey "R">
+<!ENTITY helpCheckForUpdates.label "Поиск обновлений...">
+<!ENTITY helpCheckForUpdates.accesskey "U">
