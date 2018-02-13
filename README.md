@@ -1,8 +1,8 @@
 # zotero-powerpoint
 
-# Attention: this project is deprecated.
+## Attention: this project is deprecated. ##
 
-This is an open-source project that uses Zotero and enables users to do the following in PowerPoint:
+This was an open-source project that uses Zotero and enabled users to do the following in PowerPoint:
 
 * Choose citation style
 * Add citations to the presentation
